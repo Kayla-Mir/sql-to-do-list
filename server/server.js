@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('server/public'));
 
-//app.use('/task', taskRouter);
+app.use('/task', taskRouter);
 
 app.listen(PORT, () => {
     console.log('listening on port', PORT);

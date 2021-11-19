@@ -40,4 +40,5 @@
 
     [ ] Text or BG color of tasks to show completed or not
     [ ] change font and BG color
+    [ ] MAKE SURE YOU USE THE NEWEST V OF BOOTSTRAP
   
