@@ -1,9 +1,10 @@
 $(document).ready(onReady);
 
 function onReady() {
-    console.log('ready');
-    $('#submitBtn').on('click', submitTask);
     getTasks();
+    $('#submitBtn').on('click', submitTask);
+    $('#viewTasks').on('click', '.completeBtn', completeTask);
+    
 }
 
 const clearInputs = () => {
@@ -49,8 +50,9 @@ function renderTasks(tasks) {
     $('#viewTasks').empty();
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
+        // let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const renderIfComplete = (task.mark_completed === 'Y') ? 
-        `<td></td>
+        `<td>${task.time_completed}</td>
         <td>
             <button class="deleteBtn" data-id="${task.id}">Delete</button>
         </td>`
@@ -69,6 +71,19 @@ function renderTasks(tasks) {
         </tr>
     `);
     }
+}
+
+function completeTask() {
+    console.log('the complete button was clicked, HORRAY!');
+    let taskId = $(this).data('id');
+    $.ajax({
+        method: 'PUT',
+        url: `/task/${taskId}`
+    }).then((res) => {
+        getTasks();
+    }).catch((err) => {
+        console.log('PUT /task error', err);        
+    });
 }
 
 // timeCompleted: new Date();

@@ -1,4 +1,5 @@
 const express = require('express');
+const { PayloadTooLarge } = require('http-errors');
 const router = express.Router();
 const pool = require('../modules/pool');
 
@@ -43,9 +44,29 @@ router.post('/', (req, res) => {
 });
 
 // PUT
-
-
-
+router.put('/:id', (req, res) => {
+    console.log('req.params:', req.params);
+    const taskToUpdate = req.params.id;
+    const options = {dateStyle: "short", timeStyle: "short"};
+    const taskTimeComplete = new Date().toLocaleString('en-US', options);
+    const sqlText = `
+        UPDATE "tasks"
+        SET "mark_completed" = $1, "time_completed" = $2
+        WHERE "id" = $3;
+    `;
+    const sqlValues = [
+        'Y',
+        taskTimeComplete,
+        taskToUpdate
+    ];
+    pool.query(sqlText, sqlValues)
+        .then((dbRes) => {
+            res.sendStatus(201);
+        }).catch((dbErr) => {
+            console.error(dbErr);
+            res.sendStatus(500);
+        });
+});
 
 // DELETE
 
