@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
             res.send(taskFromDb);
         }).catch((dbErr) => {
             console.error(dbErr);
+            res.sendStatus(500);
         });
 });
 
@@ -40,12 +41,13 @@ router.post('/', (req, res) => {
             res.sendStatus(201);
         }).catch((dbErr) => {
             console.error(dbErr);
+            res.sendStatus(500);
         });
 });
 
 // PUT
 router.put('/:id', (req, res) => {
-    console.log('req.params:', req.params);
+    console.log('in PUT req.params:', req.params);
     const taskToUpdate = req.params.id;
     const options = {dateStyle: "short", timeStyle: "short"};
     const taskTimeComplete = new Date().toLocaleString('en-US', options);
@@ -69,8 +71,23 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE
-
-
-
+router.delete('/:id', (req, res) => {
+    console.log('in DELETE req.params', req.params);
+    const taskToDelete = req.params.id;
+    const sqlText = `
+        DELETE FROM "tasks"
+        WHERE "id" = $1;
+    `;
+    const sqlValues = [
+        taskToDelete
+    ];
+    pool.query(sqlText, sqlValues)
+        .then((dbRes) => {
+            res.sendStatus(201);
+        }).catch((dbErr) => {
+            console.error(dbErr);
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router;

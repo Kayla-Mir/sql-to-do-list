@@ -4,7 +4,7 @@ function onReady() {
     getTasks();
     $('#submitBtn').on('click', submitTask);
     $('#viewTasks').on('click', '.completeBtn', completeTask);
-    
+    $('#viewTasks').on('click', '.deleteBtn', deleteTask);
 }
 
 const clearInputs = () => {
@@ -58,18 +58,28 @@ function renderTasks(tasks) {
         </td>`
         :
         `<td>
-        <button class="completeBtn" data-id="${task.id}" data-complete="${task.mark_completed}">Complete</button>
+            <button class="completeBtn" data-id="${task.id}" data-complete="${task.mark_completed}">Complete</button>
         </td>
         <td>
             <button class="deleteBtn" data-id="${task.id}">Delete</button>
         </td>`;
-    $('#viewTasks').append(`
-        <tr>
-            <td>${task.task}</td>
-            <td>${task.notes}</td>
-            ${renderIfComplete}
-        </tr>
-    `);
+        if (task.mark_completed === 'Y') {
+            $('#viewTasks').append(`
+                <tr class="completedRow">
+                    <td>${task.task}</td>
+                    <td>${task.notes}</td>
+                    ${renderIfComplete}
+                </tr>
+            `);
+        } else {
+            $('#viewTasks').append(`
+            <tr class="normalRow">
+                <td>${task.task}</td>
+                <td>${task.notes}</td>
+                ${renderIfComplete}
+            </tr>
+        `);
+        }
     }
 }
 
@@ -86,4 +96,14 @@ function completeTask() {
     });
 }
 
-// timeCompleted: new Date();
+function deleteTask() {
+    const taskToDelete = $(this).data('id');
+    $.ajax({
+        method: 'DELETE',
+        url: `/task/${taskToDelete}`
+    }).then((res) => {
+        getTasks();
+    }).catch((err) => {
+        console.log('DELETE /task error', err);
+    });
+}
