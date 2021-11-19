@@ -1,10 +1,27 @@
 body {
-    background-color: rgb(161, 172, 153);
+    background-color: rgb(192, 206, 228);
+}
+
+button {
+    background-color: white;
+    border-color: lightgray;
+    border-radius: 5px;
+    padding: 4px 8px;
 }
 
 table {
     width: 60vw;
     border-collapse: collapse;
+}
+
+.completedRow {
+    background-color: rgb(191, 228, 154);
+    color: black;
+}
+
+.normalRow {
+    background-color: rgb(235, 233, 227);
+    color: black;
 }
   
 td, th {
@@ -15,14 +32,10 @@ td, th {
 }
 
 th {
-    background-color: rgb(129, 143, 118);
-}
-
-td {
-     background-color: rgb(196, 208, 187);
-     color: black;
+    background-color: rgb(143, 180, 213);
 }
 
 li {
     text-align: left;
 }
+
