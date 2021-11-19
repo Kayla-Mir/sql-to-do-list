@@ -29,9 +29,9 @@
     [x] Add inputs and buttons
         - Store created tasks in db
         - Refresh front-end to show tasks
-    [ ] Delete button
+    [x] Delete button
         - delete from db
-    [ ] Complete button 
+    [x] Complete button 
         - store completed in db
         - should be 'checked off'
         - Change visuals when completed (CSS)
