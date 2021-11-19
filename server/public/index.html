@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,13 +10,55 @@
     <script src="./scripts/client.js"></script>
     <title>To Do List App</title>
 </head>
+
 <body>
     <header>
-
+        <h1>To Do List App</h1>
     </header>
     <section>
-
+        <h2>Add Your Task</h2>
+        <input type="text" id="taskIn" placeholder="Task"/>
+        <input type="text" id="notesIn" placeholder="notes"/>
+        <button id="submitBtn">Submit</button>
     </section>
-    
+    <section>
+        <div id="taskArea">
+            <h2>Your Tasks</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Notes</th>
+                        <th>Mark Completed</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="viewTasks">
+                    <!-- <tr>
+                        <td>Groceries</td>
+                        <td>milk, bread</td>
+                        <td>
+                            <button>Complete</button>
+                        </td>
+                        <td>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Walk the dog</td>
+                        <td>her morning walk</td>
+                        <td>
+                            <button>Complete</button>
+                        </td>
+                        <td>
+                            <button>Delete</button>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
 </body>
+
 </html>

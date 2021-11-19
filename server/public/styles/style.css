@@ -1,3 +1,28 @@
 body {
-    background-color: cadetblue;
+    background-color: rgb(161, 172, 153);
+}
+
+table {
+    width: 60vw;
+    border-collapse: collapse;
+}
+  
+td, th {
+    border: 1px solid #999;
+    padding: 0.5rem;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+th {
+    background-color: rgb(129, 143, 118);
+}
+
+td {
+     background-color: rgb(196, 208, 187);
+     color: black;
+}
+
+li {
+    text-align: left;
 }
