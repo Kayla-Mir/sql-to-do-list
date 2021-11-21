@@ -16,10 +16,17 @@ header {
     text-align: center;
     background: #90b3ac;
     color: white;
-    font-size: 30px;
+    font-size: 25px;
+    font-family: monospace;
+}
+
+h4 {
+    font-family: monospace;
+    font-size: x-large;
 }
 
 h2 {
+    font-family: monospace;
     font-size: x-large;
 }
 
@@ -69,6 +76,8 @@ table {
     width: 60vw;
     border-collapse: collapse;
     box-shadow: 10px 10px 10px rgb(94, 94, 94);
+    font-family: sans-serif;
+    font-size: 11pt;
 }
 
 .completedRow {
