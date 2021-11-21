@@ -1,9 +1,8 @@
 const express = require('express');
-const { PayloadTooLarge } = require('http-errors');
 const router = express.Router();
 const pool = require('../modules/pool');
 
-// GET
+// GET route gets the tasks from the server in an ascending order
 router.get('/', (req, res) => {
     const sqlText = `
     SELECT * FROM "tasks"
@@ -19,7 +18,7 @@ router.get('/', (req, res) => {
         });
 });
 
-// POST
+// POST route sends the new task to be stored in the server
 router.post('/', (req, res) => {
     console.log('POST /task');
     const newTask = req.body;
@@ -45,7 +44,7 @@ router.post('/', (req, res) => {
         });
 });
 
-// PUT
+// PUT route updates the completed status and the time completed will be stored now
 router.put('/:id', (req, res) => {
     console.log('in PUT req.params:', req.params);
     const taskToUpdate = req.params.id;
@@ -70,7 +69,7 @@ router.put('/:id', (req, res) => {
         });
 });
 
-// DELETE
+// DELETE route deletes a task from the server 
 router.delete('/:id', (req, res) => {
     console.log('in DELETE req.params', req.params);
     const taskToDelete = req.params.id;

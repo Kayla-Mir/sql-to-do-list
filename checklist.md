@@ -39,7 +39,7 @@
 ### Styling:
 
     [x] Text or BG color of tasks to show completed or not
-    [ ] change font and BG color
+    [x] change font and BG color
 
 ### Stretch Goals:
 
