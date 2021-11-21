@@ -7,6 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('server/public'));
 
+// sends all requests from /task route to the taskRouter.js file
 app.use('/task', taskRouter);
 
 app.listen(PORT, () => {

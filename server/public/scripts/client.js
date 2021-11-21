@@ -12,6 +12,7 @@ const clearInputs = () => {
     $('#notesIn').val('');
 }
 
+// sends a new task to the server via a POST route with info from the input fields
 function submitTask() {
     const newTask = {
         task: $('#taskIn').val(),
@@ -33,6 +34,7 @@ function submitTask() {
     });
 }
 
+// gets all the tasks stored in the server and calls the render function with the response
 function getTasks() {
     console.log('in renderTasks');
     $.ajax({
@@ -46,11 +48,11 @@ function getTasks() {
     });
 }
 
+// renders the tasks on the DOM, if a task is complete it renders the time completed instead and with a new class attribute
 function renderTasks(tasks) {
     $('#viewTasks').empty();
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
-        // let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const renderIfComplete = (task.mark_completed === 'Y') ?
             `<td>${task.time_completed}</td>
         <td>
@@ -83,6 +85,7 @@ function renderTasks(tasks) {
     }
 }
 
+// when the complete button is clicked it will send a PUT request to the server to update the status and store the time completed
 function completeTask() {
     console.log('the complete button was clicked, HORRAY!');
     let taskId = $(this).data('id');
@@ -96,6 +99,7 @@ function completeTask() {
     });
 }
 
+// sends a DELETE request to the server with a sweetalert confirmation 
 function deleteTask() {
     const taskToDelete = $(this).data('id');
     swal({
@@ -120,16 +124,4 @@ function deleteTask() {
             swal("Your task was not deleted!")
         }
     });
-    // if (confirm("Are you sure you want to delete the task?") === true) {
-    //     $.ajax({
-    //         method: 'DELETE',
-    //         url: `/task/${taskToDelete}`
-    //     }).then((res) => {
-    //         getTasks();
-    //     }).catch((err) => {
-    //         console.log('DELETE /task error', err);
-    //     });
-    // } else {
-    //     return false;
-    // }
 }
