@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Kayla-Mir/weekend-sql-to-do-list#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "pg": "^8.7.1"
+    "pg": "^8.7.1",
+    "sweetalert": "^2.1.2"
   }
 }

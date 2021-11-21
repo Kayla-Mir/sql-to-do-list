@@ -8,19 +8,23 @@
     <link rel="stylesheet" href="./styles/style.css">
     <script src="./vendors/jquery.js"></script>
     <script src="./scripts/client.js"></script>
+    <script src="./vendors/sweetalert.min.js"></script>
     <title>To Do List App</title>
 </head>
 
 <body>
     <header>
-        <h1>To Do List App</h1>
+        <h1>To Do List</h1>
+        <h4>Keep track of all your tasks here!</h4>
     </header>
-    <section>
+    <section id="addTaskArea">
         <h2>Add Your Task</h2>
         <input type="text" id="taskIn" placeholder="Task"/>
         <input type="text" id="notesIn" placeholder="notes"/>
-        <button id="submitBtn">Submit</button>
     </section>
+    <div id="btnDiv">
+        <button id="submitBtn">Submit</button>
+    </div>
     <section>
         <div id="taskArea">
             <h2>Your Tasks</h2>
