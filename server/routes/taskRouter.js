@@ -49,7 +49,7 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
     console.log('in PUT req.params:', req.params);
     const taskToUpdate = req.params.id;
-    const options = {dateStyle: "short", timeStyle: "short"};
+    const options = { dateStyle: "short", timeStyle: "short" };
     const taskTimeComplete = new Date().toLocaleString('en-US', options);
     const sqlText = `
         UPDATE "tasks"

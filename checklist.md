@@ -38,7 +38,13 @@
 
 ### Styling:
 
-    [ ] Text or BG color of tasks to show completed or not
+    [x] Text or BG color of tasks to show completed or not
     [ ] change font and BG color
-    [ ] MAKE SURE YOU USE THE NEWEST V OF BOOTSTRAP
+
+### Stretch Goals:
+
+    [x] Time completed recorded
+    [x] Confirm Delete alert
+    [ ] Order table query with bootstrap?
+    [ ] Maybe do bootstrap
   

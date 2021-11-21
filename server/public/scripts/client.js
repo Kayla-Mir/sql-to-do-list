@@ -51,13 +51,13 @@ function renderTasks(tasks) {
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         // let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        const renderIfComplete = (task.mark_completed === 'Y') ? 
-        `<td>${task.time_completed}</td>
+        const renderIfComplete = (task.mark_completed === 'Y') ?
+            `<td>${task.time_completed}</td>
         <td>
             <button class="deleteBtn" data-id="${task.id}">Delete</button>
         </td>`
-        :
-        `<td>
+            :
+            `<td>
             <button class="completeBtn" data-id="${task.id}" data-complete="${task.mark_completed}">Complete</button>
         </td>
         <td>
@@ -92,18 +92,44 @@ function completeTask() {
     }).then((res) => {
         getTasks();
     }).catch((err) => {
-        console.log('PUT /task error', err);        
+        console.log('PUT /task error', err);
     });
 }
 
 function deleteTask() {
     const taskToDelete = $(this).data('id');
-    $.ajax({
-        method: 'DELETE',
-        url: `/task/${taskToDelete}`
-    }).then((res) => {
-        getTasks();
-    }).catch((err) => {
-        console.log('DELETE /task error', err);
+    swal({
+        title: "Are you sure?",
+        text: "Your task will be deleted!",
+        icon: "warning",
+        buttons: [true, "Do it!"]
+    }).then((toDelete) => {
+        if (toDelete) {
+            swal("Your task has been deleted!", {
+                icon: "success"
+            });
+            $.ajax({
+                method: 'DELETE',
+                url: `/task/${taskToDelete}`
+            }).then((res) => {
+                getTasks();
+            }).catch((err) => {
+                console.log('DELETE /task error', err);
+            });
+        } else {
+            swal("Your task was not deleted!")
+        }
     });
+    // if (confirm("Are you sure you want to delete the task?") === true) {
+    //     $.ajax({
+    //         method: 'DELETE',
+    //         url: `/task/${taskToDelete}`
+    //     }).then((res) => {
+    //         getTasks();
+    //     }).catch((err) => {
+    //         console.log('DELETE /task error', err);
+    //     });
+    // } else {
+    //     return false;
+    // }
 }

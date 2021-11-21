@@ -1,5 +1,19 @@
 body {
-    background-color: rgb(192, 206, 228);
+    background-color: rgb(217, 235, 224);
+    margin: 0;
+    color: #617974;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+    background: #90b3ac;
+    color: white;
+    font-size: 30px;
+}
+
+h2 {
+    font-size: x-large;
 }
 
 button {
@@ -9,30 +23,61 @@ button {
     padding: 4px 8px;
 }
 
+input {
+    padding: 4px 20px;
+    text-align: center;
+    border-radius: 5px;
+    border-color: white;
+}
+
+#btnDiv {
+    text-align: center;
+}
+
+#submitBtn {
+    margin-top: 5px;
+    padding: 4px 60px;
+}
+
+#addTaskArea {
+    text-align: center;
+}
+
+#taskArea {
+    padding-top: 15px;
+    text-align: center;
+    margin-right: 20vw;
+    margin-left: 20vw;
+}
+
 table {
     width: 60vw;
     border-collapse: collapse;
+    box-shadow: 10px 10px 10px rgb(94, 94, 94);
 }
 
 .completedRow {
-    background-color: rgb(191, 228, 154);
+    background-color: rgb(183, 230, 188);
     color: black;
 }
 
 .normalRow {
-    background-color: rgb(235, 233, 227);
+    background-color: rgb(238, 238, 238);
     color: black;
 }
   
 td, th {
-    border: 1px solid #999;
+    border: 1px solid rgb(0, 0, 0);
     padding: 0.5rem;
     text-align: center;
     padding-bottom: 10px;
+    color: black;
 }
 
 th {
-    background-color: rgb(143, 180, 213);
+    background-color: #79a49b;
+    color: white;
+    font-size: larger;
 }
 
 li {
